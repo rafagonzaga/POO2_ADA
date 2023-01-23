@@ -1,12 +1,14 @@
 package novaAbordagem;
 
+import novaAbordagem.enums.GeneroLiterario;
+
 public class Livro extends Produto {
 
-    private String genero;
+    private GeneroLiterario genero;
     private String escritor;
     private String editora;
 
-    public Livro(String id, String nome, Double preco, String genero, String escritor, String editora){
+    public Livro(String id, String nome, Double preco, GeneroLiterario genero, String escritor, String editora){
         super(id, nome, preco);
         this.genero = genero;
         this.escritor = escritor;
@@ -19,11 +21,11 @@ public class Livro extends Produto {
 
     public Livro(){}
 
-    public String getGenero() {
+    public GeneroLiterario getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroLiterario genero) {
         this.genero = genero;
     }
 

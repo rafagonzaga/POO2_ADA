@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Util {
 
-    public static Livro cadastrarLivro(Scanner entrada){
+    public static Livro cadastrarLivro(Scanner entrada) {
         Livro livro = new Livro();
 
         System.out.print("Digite o id: ");
@@ -26,11 +26,20 @@ public class Util {
         System.out.print("Escolha o gênero: ");
         int index = 1;
         System.out.println();
-        for(GeneroLiterario genero : GeneroLiterario.values()){
+        for (GeneroLiterario genero : GeneroLiterario.values()) {
             System.out.println(index + " - " + genero);
             index++;
         }
-        String genero = entrada.nextLine();
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+        GeneroLiterario genero = switch (escolha) {
+            case 1 -> GeneroLiterario.ROMANCE;
+            case 2 -> GeneroLiterario.FICCAO;
+            case 3 -> GeneroLiterario.POLICIAL;
+            case 4 -> GeneroLiterario.AUTO_AJUDA;
+            case 5 -> GeneroLiterario.INFANTIL;
+            default -> null;
+        };
         livro.setGenero(genero);
 
         System.out.print("Digite o nome do escritor: ");
@@ -44,7 +53,7 @@ public class Util {
         return livro;
     }
 
-    public static Filme cadastrarFilme(Scanner entrada){
+    public static Filme cadastrarFilme(Scanner entrada) {
         Filme filme = new Filme();
 
         System.out.print("Digite o id: ");
@@ -72,12 +81,22 @@ public class Util {
         System.out.print("Escolha o gênero: ");
         int index = 1;
         System.out.println();
-        for(GeneroFilme genero : GeneroFilme.values()){
+        for (GeneroFilme genero : GeneroFilme.values()) {
             System.out.println(index + " - " + genero);
             index++;
         }
-        String genero = entrada.nextLine();
-        filme.setGeneros(genero);
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        GeneroFilme genero = switch (escolha) {
+            case 1 -> GeneroFilme.ROMANCE;
+            case 2 -> GeneroFilme.COMEDIA;
+            case 3 -> GeneroFilme.AVENTURA;
+            case 4 -> GeneroFilme.GUERRA;
+            case 5 -> GeneroFilme.INFANTIL;
+            default -> null;
+        };
+        filme.setGenero(genero);
 
         System.out.print("Digite os produtores: ");
         String produtores = entrada.nextLine();
@@ -86,7 +105,7 @@ public class Util {
         return filme;
     }
 
-    public static Jogo cadastrarJogo(Scanner entrada){
+    public static Jogo cadastrarJogo(Scanner entrada) {
         Jogo jogo = new Jogo();
 
         System.out.print("Digite o id: ");
@@ -110,7 +129,7 @@ public class Util {
         System.out.print("Escolha o gênero: ");
         int index = 1;
         System.out.println();
-        for(GeneroJogo genero : GeneroJogo.values()){
+        for (GeneroJogo genero : GeneroJogo.values()) {
             System.out.println(index + " - " + genero);
             index++;
         }
@@ -124,7 +143,7 @@ public class Util {
         return jogo;
     }
 
-    public static Brinquedo cadastrarBrinquedo(Scanner entrada){
+    public static Brinquedo cadastrarBrinquedo(Scanner entrada) {
         Brinquedo brinquedo = new Brinquedo();
 
         System.out.print("Digite o id: ");
@@ -144,7 +163,7 @@ public class Util {
         System.out.print("Escolha o tipo: ");
         int index = 1;
         System.out.println();
-        for(TipoBrinquedo tipoBrinquedo : TipoBrinquedo.values()){
+        for (TipoBrinquedo tipoBrinquedo : TipoBrinquedo.values()) {
             System.out.println(index + " - " + tipoBrinquedo);
             index++;
         }
@@ -154,7 +173,7 @@ public class Util {
         return brinquedo;
     }
 
-    public static AlbumDeMusica cadastrarAlbumDeMusica(Scanner entrada){
+    public static AlbumDeMusica cadastrarAlbumDeMusica(Scanner entrada) {
         AlbumDeMusica albumDeMusica = new AlbumDeMusica();
 
         System.out.print("Digite o id: ");
@@ -178,7 +197,7 @@ public class Util {
         System.out.print("Escolha o gênero: ");
         int index = 1;
         System.out.println();
-        for(GeneroMusica genero : GeneroMusica.values()){
+        for (GeneroMusica genero : GeneroMusica.values()) {
             System.out.println(index + " - " + genero);
             index++;
         }

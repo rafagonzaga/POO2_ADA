@@ -1,18 +1,20 @@
 package novaAbordagem;
 
+import novaAbordagem.enums.GeneroFilme;
+
 public class Filme extends Produto {
 
     private String estudio;
     private String diretores;
-    private String generos;
+    private GeneroFilme genero;
     private String produtores;
 
 
-    public Filme(String id, String nome, Double preco, String estudio, String diretores, String generos, String produtores) {
+    public Filme(String id, String nome, Double preco, String estudio, String diretores, GeneroFilme genero, String produtores) {
         super(id, nome, preco);
         this.estudio = estudio;
         this.diretores = diretores;
-        this.generos = generos;
+        this.genero = genero;
         this.produtores = produtores;
     }
 
@@ -39,12 +41,12 @@ public class Filme extends Produto {
         this.diretores = diretores;
     }
 
-    public String getGeneros() {
-        return generos;
+    public GeneroFilme getGenero() {
+        return genero;
     }
 
-    public void setGeneros(String generos) {
-        this.generos = generos;
+    public void setGenero(GeneroFilme genero) {
+        this.genero = genero;
     }
 
     public String getProdutores() {
@@ -63,7 +65,7 @@ public class Filme extends Produto {
                 ", preco=" + super.getPreco() +
                 ", estudio='" + estudio + '\'' +
                 ", diretores='" + diretores + '\'' +
-                ", generos='" + generos + '\'' +
+                ", genero='" + genero + '\'' +
                 ", produtores='" + produtores + '\'' +
                 '}';
     }

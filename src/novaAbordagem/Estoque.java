@@ -14,6 +14,8 @@ public class Estoque<T extends Produto> {
         } else {
             produtos.put(produto, quantidade);
         }
+        System.out.println("Produto cadastrado:");
+        System.out.println(produto);
     }
 
     public void removerProduto(T produto, Integer quantidade) {
@@ -63,6 +65,15 @@ public class Estoque<T extends Produto> {
         }
         return null;
     }
+
+//    public T pesquisarPorId(String id) {
+//        for (Map.Entry<T, Integer> pair : produtos.entrySet()) {
+//            if (pair.getKey().getId().equals(id)) {
+//                return pair.getKey();
+//            }
+//        }
+//        return null;
+//    }
 
     public void verProduto(T produto) {
         if (!produtos.containsKey(produto)) {
