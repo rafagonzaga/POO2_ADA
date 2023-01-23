@@ -57,8 +57,12 @@ public class Main {
 //        System.out.println("Saldo final do caixa:");
 
 
+
         System.out.println("\nBem-vindo ao sistema da Livraria.");
+
         Boolean ativo = true;
+
+
         do {
 
             System.out.println("\nEssas são as suas opções iniciais:");
@@ -66,6 +70,7 @@ public class Main {
             System.out.println("2 - Listar produto por categoria");
             System.out.println("3 - Consultar produto por id");
             System.out.println("4 - Adicionar um produto");
+            System.out.println("5 - Vender um produto");
             System.out.println("9 - Ver o saldo do caixa");
             System.out.println("0 - Sair do sistema");
 
@@ -83,12 +88,29 @@ public class Main {
                 case 3:
                     System.out.print("Digite o ID para pesquisar: ");
                     String idProcurado = entrada.next();
-                    System.out.println(Livraria.consultarProdutoPorID(estoques, idProcurado));
+                    entrada.nextLine();
+                    Livraria.consultarProdutoPorID(estoques, idProcurado);
                     break;
                 case 4:
                     System.out.println("Essas são as categorias de produtos.");
                     Categoria categoria = Livraria.escolherCategoria(entrada);
                     Livraria.cadastrarProduto(Livraria.escolherEstoque(estoques, categoria), entrada);
+                    break;
+                case 5:
+//                    System.out.println("Essas são as categorias de produtos.");
+//                    categoria = Livraria.escolherCategoria(entrada);
+                    System.out.print("Digite o ID para pesquisar: ");
+                    idProcurado = entrada.next();
+                    entrada.nextLine();
+                    Produto produto = Livraria.consultarProdutoPorID(estoques, idProcurado);
+                    categoria = Livraria.obterCategoria(estoques, idProcurado);
+                    Estoque estoqueEspecifico = Livraria.escolherEstoque(estoques, categoria);
+                    System.out.print("Vender quantos itens: ");
+                    int quantidade = entrada.nextInt();
+                    entrada.nextLine();
+                    Livraria.venderProduto(estoqueEspecifico, produto, quantidade);
+
+                    //Livraria.cadastrarProduto(Livraria.escolherEstoque(estoques, categoria), entrada);
                     break;
                 case 9:
                     System.out.println("Saldo do caixa: " + Caixa.getSaldo());
@@ -104,6 +126,8 @@ public class Main {
             if(controle.equals("0"))break;
 
         } while (ativo);
+
+
         entrada.close();
         System.out.println("Saldo final do caixa:" + Caixa.getSaldo());
     }

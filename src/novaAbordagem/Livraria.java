@@ -24,7 +24,20 @@ public class Livraria {
     public static Produto consultarProdutoPorID(Map<Categoria, Estoque<? extends Produto>> estoques, String id) {
         for (Map.Entry<Categoria, Estoque<? extends Produto>> lista : estoques.entrySet()) {
             if(lista.getValue().pesquisarPorId(id) != null){
-                return lista.getValue().pesquisarPorId(id);
+                Produto novo = lista.getValue().pesquisarPorId(id);
+                System.out.print(novo);
+                System.out.println(" Em estoque: " + lista.getValue().getProdutos().get(novo));
+                return novo;
+            }
+        }
+        return null;
+    }
+
+    public static Categoria obterCategoria(Map<Categoria, Estoque<? extends Produto>> estoques, String id) {
+        for (Map.Entry<Categoria, Estoque<? extends Produto>> lista : estoques.entrySet()) {
+            if(lista.getValue().pesquisarPorId(id) != null){
+
+                return lista.getKey();
             }
         }
         return null;
@@ -36,6 +49,13 @@ public class Livraria {
             System.out.println(index + " - " + categoria);
             index++;
         }
+    }
+
+    public static Integer escolherQuantidade(Scanner entrada){
+        System.out.println("Quantos produtos deseja adicionar: ");
+        Integer escolha = entrada.nextInt();
+        entrada.nextLine();
+        return escolha;
     }
 
     public static Categoria escolherCategoria(Scanner entrada) {
@@ -96,23 +116,23 @@ public class Livraria {
         switch (obterTipoEstoque(estoque)) {
             case "Livro":
                 System.out.println("É livro");
-                estoque.adicionarProduto((T) Util.cadastrarLivro(entrada), 10);
+                estoque.adicionarProduto((T) Util.cadastrarLivro(entrada), Livraria.escolherQuantidade(entrada));
                 break;
             case "Filme":
                 System.out.println("É filme");
-                estoque.adicionarProduto((T) Util.cadastrarFilme(entrada), 20);
+                estoque.adicionarProduto((T) Util.cadastrarFilme(entrada), Livraria.escolherQuantidade(entrada));
                 break;
             case "Jogo":
                 System.out.println("É jogo");
-                estoque.adicionarProduto((T) Util.cadastrarJogo(entrada), 10);
+                estoque.adicionarProduto((T) Util.cadastrarJogo(entrada), Livraria.escolherQuantidade(entrada));
                 break;
             case "Brinquedo":
                 System.out.println("É brinquedo");
-                estoque.adicionarProduto((T) Util.cadastrarBrinquedo(entrada), 15);
+                estoque.adicionarProduto((T) Util.cadastrarBrinquedo(entrada), Livraria.escolherQuantidade(entrada));
                 break;
             case "AlbumDeMusica":
                 System.out.println("É música");
-                estoque.adicionarProduto((T) Util.cadastrarAlbumDeMusica(entrada), 40);
+                estoque.adicionarProduto((T) Util.cadastrarAlbumDeMusica(entrada), Livraria.escolherQuantidade(entrada));
                 break;
         }
     }

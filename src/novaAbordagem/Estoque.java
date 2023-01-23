@@ -27,10 +27,8 @@ public class Estoque<T extends Produto> {
             return;
         }
         Integer quantidadeEmEstoque = produtos.get(produto);
-        if (produtos.get(produto) > quantidade) {
+        if (produtos.get(produto) >= quantidade) {
             produtos.put(produto, quantidadeEmEstoque - quantidade);
-        } else if(produtos.get(produto) == quantidade){
-          produtos.remove(produto);
         } else {
             System.out.println("Impossível remover a quantidade pretendida.");
             System.out.println("Quantidade em estoque: " + quantidadeEmEstoque);
