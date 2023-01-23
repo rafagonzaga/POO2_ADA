@@ -51,7 +51,7 @@ public class Livro extends Produto {
                 "id='" + super.getId() + '\'' +
                 ", nome='" + super.getNome() + '\'' +
                 ", preco=" + super.getPreco() +
-                ", genero='" + genero + '\'' +
+                ", gênero='" + genero + '\'' +
                 ", escritor='" + escritor + '\'' +
                 ", editora='" + editora + '\'' +
                 '}';

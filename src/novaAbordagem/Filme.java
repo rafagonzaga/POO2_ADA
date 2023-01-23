@@ -62,10 +62,10 @@ public class Filme extends Produto {
         return "Filme{" +
                 "id='" + super.getId() + '\'' +
                 ", nome='" + super.getNome() + '\'' +
-                ", preco=" + super.getPreco() +
+                ", preço=" + super.getPreco() +
                 ", estudio='" + estudio + '\'' +
                 ", diretores='" + diretores + '\'' +
-                ", genero='" + genero + '\'' +
+                ", gênero='" + genero + '\'' +
                 ", produtores='" + produtores + '\'' +
                 '}';
     }

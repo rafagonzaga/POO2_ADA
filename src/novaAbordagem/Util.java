@@ -133,7 +133,20 @@ public class Util {
             System.out.println(index + " - " + genero);
             index++;
         }
-        String genero = entrada.nextLine();
+
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        GeneroJogo genero = switch (escolha) {
+            case 1 -> GeneroJogo.ELETRONICO;
+            case 2 -> GeneroJogo.TABULEIRO;
+            case 3 -> GeneroJogo.EDUCATIVO;
+            case 4 -> GeneroJogo.VIDEO_GAME;
+            default -> null;
+        };
+        jogo.setGenero(genero);
+
+
         jogo.setGenero(genero);
 
         System.out.print("Digite o estúdio: ");
@@ -167,7 +180,17 @@ public class Util {
             System.out.println(index + " - " + tipoBrinquedo);
             index++;
         }
-        String tipo = entrada.nextLine();
+
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        TipoBrinquedo tipo = switch (escolha) {
+            case 1 -> TipoBrinquedo.MADEIRA;
+            case 2 -> TipoBrinquedo.EDUCATIVO;
+            case 3 -> TipoBrinquedo.ESPORTIVO;
+            default -> null;
+        };
+
         brinquedo.setTipo(tipo);
 
         return brinquedo;
@@ -201,7 +224,17 @@ public class Util {
             System.out.println(index + " - " + genero);
             index++;
         }
-        String genero = entrada.nextLine();
+
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        GeneroMusica genero = switch (escolha) {
+            case 1 -> GeneroMusica.MPB;
+            case 2 -> GeneroMusica.ROCK;
+            case 3 -> GeneroMusica.SAMBA;
+            case 4 -> GeneroMusica.CLASSICA;
+            default -> null;
+        };
         albumDeMusica.setGenero(genero);
 
         System.out.print("Digite os selos: ");

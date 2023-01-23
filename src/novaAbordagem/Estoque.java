@@ -40,7 +40,7 @@ public class Estoque<T extends Produto> {
 
     public void listarProdutos() {
         for (Map.Entry<T, Integer> pair : produtos.entrySet()) {
-            System.out.println(pair.getKey());
+            System.out.println(pair.getKey() + ": Em estoque: " + pair.getValue());
             //System.out.println(" : " + pair.getValue());
         }
     }

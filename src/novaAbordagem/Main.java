@@ -78,7 +78,6 @@ public class Main {
                     Livraria.listarTodosProdutos(estoques);
                     break;
                 case 2:
-//                    Livraria.listaCategoriasDeProdutos();
                     Livraria.listarProdutosPorCategoria(estoques, Livraria.escolherCategoria(entrada));
                     break;
                 case 3:

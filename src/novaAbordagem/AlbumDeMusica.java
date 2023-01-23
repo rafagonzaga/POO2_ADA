@@ -1,13 +1,15 @@
 package novaAbordagem;
 
+import novaAbordagem.enums.GeneroMusica;
+
 public class AlbumDeMusica extends Produto {
 
     private String musicos;
-    private String genero;
+    private GeneroMusica genero;
     private String selos;
 
 
-    public AlbumDeMusica(String id, String nome, Double preco, String selos, String musicos, String genero) {
+    public AlbumDeMusica(String id, String nome, Double preco, String selos, String musicos, GeneroMusica genero) {
         super(id, nome, preco);
         this.musicos = musicos;
         this.selos = selos;
@@ -37,11 +39,11 @@ public class AlbumDeMusica extends Produto {
         this.musicos = musicos;
     }
 
-    public String getGenero() {
+    public GeneroMusica getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroMusica genero) {
         this.genero = genero;
     }
 

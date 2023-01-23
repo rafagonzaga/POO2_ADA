@@ -1,13 +1,15 @@
 package novaAbordagem;
 
+import novaAbordagem.enums.GeneroJogo;
+
 public class Jogo extends Produto {
 
     private String distribuidora;
-    private String genero;
+    private GeneroJogo genero;
     private String estudio;
 
 
-    public Jogo(String id, String nome, Double preco, String estudio, String distribuidora, String genero) {
+    public Jogo(String id, String nome, Double preco, String estudio, String distribuidora, GeneroJogo genero) {
         super(id, nome, preco);
         this.distribuidora = distribuidora;
         this.estudio = estudio;
@@ -37,11 +39,11 @@ public class Jogo extends Produto {
         this.distribuidora = distribuidora;
     }
 
-    public String getGenero() {
+    public GeneroJogo getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroJogo genero) {
         this.genero = genero;
     }
 
@@ -50,10 +52,10 @@ public class Jogo extends Produto {
         return "Jogo{" +
                 "id='" + super.getId() + '\'' +
                 ", nome='" + super.getNome() + '\'' +
-                ", preco=" + super.getPreco() +
+                ", preço=" + super.getPreco() +
                 ", distribuidora='" + distribuidora + '\'' +
-                ", genero='" + genero + '\'' +
-                ", estudio='" + estudio + '\'' +
+                ", gênero='" + genero + '\'' +
+                ", estúdio='" + estudio + '\'' +
                 '}';
     }
 }

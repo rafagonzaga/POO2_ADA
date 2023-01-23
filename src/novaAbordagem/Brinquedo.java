@@ -1,10 +1,12 @@
 package novaAbordagem;
 
+import novaAbordagem.enums.TipoBrinquedo;
+
 public class Brinquedo extends Produto {
 
-    private String tipo;
+    private TipoBrinquedo tipo;
 
-    public Brinquedo(String id, String nome, Double preco, String tipo){
+    public Brinquedo(String id, String nome, Double preco, TipoBrinquedo tipo){
         super(id, nome, preco);
         this.tipo = tipo;
     }
@@ -15,11 +17,11 @@ public class Brinquedo extends Produto {
 
     public Brinquedo(){}
 
-    public String getTipo() {
+    public TipoBrinquedo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoBrinquedo tipo) {
         this.tipo = tipo;
     }
 
