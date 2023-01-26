@@ -39,7 +39,6 @@ public class Estoque<T extends Produto> {
     public void listarProdutos() {
         for (Map.Entry<T, Integer> pair : produtos.entrySet()) {
             System.out.println(pair.getKey() + ": Em estoque: " + pair.getValue());
-            //System.out.println(" : " + pair.getValue());
         }
     }
 
@@ -55,6 +54,12 @@ public class Estoque<T extends Produto> {
         return null;
     }
 
+    public void alterarQuantidadeDoProduto(T produto, Integer quantidade){
+        if(produtos.containsKey(produto)){
+            produtos.put(produto, quantidade);
+        }
+    }
+
     public T pesquisarPorId(String id) {
         for (Map.Entry<T, Integer> pair : produtos.entrySet()) {
             if (pair.getKey().getId().equals(id)) {
@@ -63,15 +68,6 @@ public class Estoque<T extends Produto> {
         }
         return null;
     }
-
-//    public T pesquisarPorId(String id) {
-//        for (Map.Entry<T, Integer> pair : produtos.entrySet()) {
-//            if (pair.getKey().getId().equals(id)) {
-//                return pair.getKey();
-//            }
-//        }
-//        return null;
-//    }
 
     public void verProduto(T produto) {
         if (!produtos.containsKey(produto)) {

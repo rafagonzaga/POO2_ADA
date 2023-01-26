@@ -14,8 +14,6 @@ public class Main {
         Map<Categoria, Estoque<? extends Produto>> estoques = new HashMap<>();
 
         Caixa caixa = new Caixa(5000.);
-//        System.out.println("Saldo inicial:");
-//        System.out.println(Caixa.getSaldo());
 
         Estoque<Livro> livros = new Estoque<>();
         Livro livro1 = new Livro("1", "Comer, rezar, amar", 35.9);
@@ -53,16 +51,9 @@ public class Main {
         estoques.put(Categoria.BRINQUEDO, brinquedos);
         estoques.put(Categoria.ALBUM_DE_MUSICA,albuns);
 
-
-//        System.out.println("Saldo final do caixa:");
-
-
-
         System.out.println("\nBem-vindo ao sistema da Livraria.");
 
-        Boolean ativo = true;
-
-
+        boolean ativo = true;
         do {
 
             System.out.println("\nEssas são as suas opções iniciais:");
@@ -71,6 +62,7 @@ public class Main {
             System.out.println("3 - Consultar produto por id");
             System.out.println("4 - Adicionar um produto");
             System.out.println("5 - Vender um produto");
+            System.out.println("6 - Alterar um produto");
             System.out.println("9 - Ver o saldo do caixa");
             System.out.println("0 - Sair do sistema");
 
@@ -97,8 +89,6 @@ public class Main {
                     Livraria.cadastrarProduto(Livraria.escolherEstoque(estoques, categoria), entrada);
                     break;
                 case 5:
-//                    System.out.println("Essas são as categorias de produtos.");
-//                    categoria = Livraria.escolherCategoria(entrada);
                     System.out.print("Digite o ID para pesquisar: ");
                     idProcurado = entrada.next();
                     entrada.nextLine();
@@ -109,8 +99,21 @@ public class Main {
                     int quantidade = entrada.nextInt();
                     entrada.nextLine();
                     Livraria.venderProduto(estoqueEspecifico, produto, quantidade);
+                    break;
+                case 6:
+                    System.out.print("Digite o ID para pesquisar: ");
+                    idProcurado = entrada.next();
+                    entrada.nextLine();
+                    Produto produtoAtual = Livraria.consultarProdutoPorID(estoques, idProcurado);
+                    categoria = Livraria.obterCategoria(estoques, idProcurado);
+                    estoqueEspecifico = Livraria.escolherEstoque(estoques, categoria);
+                    Produto produtoNovo = Util.cadastrarLivro(entrada);
+                    estoqueEspecifico.alterarProduto(produtoAtual, produtoNovo);
+                    quantidade = Livraria.escolherQuantidade(entrada);
+                    estoqueEspecifico.alterarQuantidadeDoProduto(produtoNovo, quantidade);
+                    entrada.nextLine();
+                    Livraria.consultarProdutoPorID(estoques, idProcurado);
 
-                    //Livraria.cadastrarProduto(Livraria.escolherEstoque(estoques, categoria), entrada);
                     break;
                 case 9:
                     System.out.println("Saldo do caixa: " + Caixa.getSaldo());
@@ -118,15 +121,12 @@ public class Main {
                 case 0:
                     ativo = false;
                     break;
-
-
             }
             System.out.println("\n'ENTER' para exibir o menu inicial ou '0' para sair");
             String controle = entrada.nextLine();
             if(controle.equals("0"))break;
 
         } while (ativo);
-
 
         entrada.close();
         System.out.println("Saldo final do caixa:" + Caixa.getSaldo());

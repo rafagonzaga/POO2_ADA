@@ -2,7 +2,6 @@ package novaAbordagem;
 
 import novaAbordagem.enums.Categoria;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -24,10 +23,10 @@ public class Livraria {
     public static Produto consultarProdutoPorID(Map<Categoria, Estoque<? extends Produto>> estoques, String id) {
         for (Map.Entry<Categoria, Estoque<? extends Produto>> lista : estoques.entrySet()) {
             if(lista.getValue().pesquisarPorId(id) != null){
-                Produto novo = lista.getValue().pesquisarPorId(id);
-                System.out.print(novo);
-                System.out.println(" Em estoque: " + lista.getValue().getProdutos().get(novo));
-                return novo;
+                Produto produto = lista.getValue().pesquisarPorId(id);
+                System.out.print(produto);
+                System.out.println(" Em estoque: " + lista.getValue().getProdutos().get(produto));
+                return produto;
             }
         }
         return null;
@@ -53,9 +52,7 @@ public class Livraria {
 
     public static Integer escolherQuantidade(Scanner entrada){
         System.out.println("Quantos produtos deseja adicionar: ");
-        Integer escolha = entrada.nextInt();
-        entrada.nextLine();
-        return escolha;
+        return entrada.nextInt();
     }
 
     public static Categoria escolherCategoria(Scanner entrada) {
@@ -65,21 +62,11 @@ public class Livraria {
         int escolha = entrada.nextInt();
         entrada.nextLine();
         switch (escolha) {
-            case 1:
-                categoria = Categoria.LIVRO;
-                break;
-            case 2:
-                categoria = Categoria.FILME;
-                break;
-            case 3:
-                categoria = Categoria.JOGO;
-                break;
-            case 4:
-                categoria = Categoria.BRINQUEDO;
-                break;
-            case 5:
-                categoria = Categoria.ALBUM_DE_MUSICA;
-                break;
+            case 1 -> categoria = Categoria.LIVRO;
+            case 2 -> categoria = Categoria.FILME;
+            case 3 -> categoria = Categoria.JOGO;
+            case 4 -> categoria = Categoria.BRINQUEDO;
+            case 5 -> categoria = Categoria.ALBUM_DE_MUSICA;
         }
         return categoria;
     }
